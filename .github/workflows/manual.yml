@@ -1,17 +1,15 @@
-# This is a basic workflow that is manually triggered
-
 name: Manual workflow
 on:
-  workflow_dispatch:
-  jobs:
-    build:
-      name: Build
-      runs-on: ubuntu-latest
-      - name: executing remote ssh commands using password
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.KEY }}
-          port: ${{ secrets.PORT }}
-          script: whoami
+workflow_dispatch:
+ jobs:
+   build:
+     name: Build
+     runs-on: ubuntu-latest
+     - name: executing remote ssh commands using password
+       uses: appleboy/ssh-action@master        
+	   with:
+         host: ${{ secrets.HOST }}
+         username: ${{ secrets.USERNAME }}
+         key: ${{ secrets.KEY }}
+         port: ${{ secrets.PORT }}
+         script: whoami
