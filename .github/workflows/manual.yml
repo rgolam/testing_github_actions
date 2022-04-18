@@ -1,7 +1,7 @@
 name: remote ssh command
 on:
   repository_dispatch:
-  workflow_dispatch
+  workflow_dispatch:
   
 jobs:
 
