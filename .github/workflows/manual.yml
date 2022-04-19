@@ -7,8 +7,8 @@ jobs:
 
   build:
     name: Maintenance On
-    if: ${{ github.event.types == 'status' }}
     runs-on: ubuntu-latest
+    if: ${{ github.event.types == 'status' }}
     steps:
     - name: executing remote ssh commands using SSH Key
       uses: appleboy/ssh-action@master
