@@ -1,14 +1,13 @@
 name: remote ssh command
 on:
   repository_dispatch:
-    types: [maintenance_on, maintenance_off, status]
+    types: [backend_automation]
   
 jobs:
 
   build:
     name: Maintenance On
     runs-on: ubuntu-latest
-    if: ${{ github.event.types == 'status' }}
     steps:
     - name: executing remote ssh commands using SSH Key
       uses: appleboy/ssh-action@master
