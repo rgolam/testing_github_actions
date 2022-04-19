@@ -6,7 +6,7 @@ on:
 jobs:
 
   build:
-    name: Maintenance On
+    name: Maintenance Status
     runs-on: ubuntu-latest
     steps:
     - name: executing remote ssh commands using SSH Key
