@@ -6,7 +6,7 @@ on:
 jobs:
 
   build:
-    if: ${{ github.event.client_payload.maintenance }}
+    if: ${{ github.event.client_payload.maintenance == 'true' }}
     name: Maintenance Status
     runs-on: ubuntu-latest
     steps:
