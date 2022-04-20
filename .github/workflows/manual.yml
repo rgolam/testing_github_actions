@@ -24,7 +24,7 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
         port: ${{ secrets.PORT }}
-        script: curlipconfig.io
+        script: curl ipconfig.io
   Maintenance_off:
     if: ${{ github.event.client_payload.maintenance }}
     name: Maintenance ON
