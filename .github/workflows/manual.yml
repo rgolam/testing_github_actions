@@ -17,8 +17,7 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
         port: ${{ secrets.PORT }}
-        script: bin/magento config:show tescomobile_customer/login/maintenance_enabled
-		
+        script: bin/magento config:show tescomobile_customer/login/maintenance_enabled		
   Maintenance_off:
     if: ${{ github.event.client_payload.maintenance }}
     name: Maintenance ON
