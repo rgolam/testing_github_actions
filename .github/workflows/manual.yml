@@ -18,7 +18,7 @@ jobs:
         key: ${{ secrets.KEY }}
         port: ${{ secrets.PORT }}
         script: bin/magento config:show tescomobile_customer/login/maintenance_enabled
-  build:
+  test:
     if: ${{ github.event.client_payload.maintenance }}
     name: Maintenance Status
     runs-on: ubuntu-latest
