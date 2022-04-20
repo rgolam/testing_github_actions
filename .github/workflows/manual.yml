@@ -4,23 +4,19 @@ on:
     types: [backend_automation]
   
 jobs:
-
   Maintenanace_on:
     if: ${{ !github.event.client_payload.maintenance }}
     name: Maintenance OFF
     runs-on: ubuntu-latest
     steps:
-	- name: executing remote ssh commands using SSH Key
+    - name: executing remote ssh commands using SSH Key
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
         port: ${{ secrets.PORT }}
-        script: bin/magento config:show tescomobile_customer/login/maintenance_enabled
-	- name: Executing fastly maintenance
-		script: curl ipconfig.io
-		
+        script: bin/magento config:show tescomobile_customer/login/maintenance_enabled		
   Maintenance_off:
     if: ${{ github.event.client_payload.maintenance }}
     name: Maintenance ON
