@@ -5,9 +5,9 @@ on:
   
 jobs:
 
-  build:
+  Maintenanace_on:
     if: ${{ !github.event.client_payload.maintenance }}
-    name: Maintenance Status
+    name: Maintenance OFF
     runs-on: ubuntu-latest
     steps:
     - name: executing remote ssh commands using SSH Key
@@ -18,9 +18,12 @@ jobs:
         key: ${{ secrets.KEY }}
         port: ${{ secrets.PORT }}
         script: bin/magento config:show tescomobile_customer/login/maintenance_enabled
-  test:
+	- name: Executing fastly maintenance
+		script: curl ipconfig.io
+		
+  Maintenance_off:
     if: ${{ github.event.client_payload.maintenance }}
-    name: Maintenance Status
+    name: Maintenance ON
     runs-on: ubuntu-latest
     steps:
     - name: executing remote ssh commands using SSH Key
