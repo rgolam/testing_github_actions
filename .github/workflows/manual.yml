@@ -6,7 +6,7 @@ on:
 jobs:
   Maintenanace_on:
     if: ${{ github.event.client_payload.maintenance }}
-    name: Maintenance OFF
+    name: Maintenance ON
     runs-on: ubuntu-latest
     steps:
     - name: executing remote ssh commands using SSH Key
@@ -25,7 +25,7 @@ jobs:
         --header 'Fastly-Key: ${{ secrets.fastly_key }}'
   Maintenance_off:
     if: ${{ !github.event.client_payload.maintenance }}
-    name: Maintenance ON
+    name: Maintenance OFF
     runs-on: ubuntu-latest
     steps:
     - name: executing remote ssh commands using SSH Key
