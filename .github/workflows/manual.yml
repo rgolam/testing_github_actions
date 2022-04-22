@@ -24,7 +24,7 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
         port: ${{ secrets.PORT }}
-        script: curl ipconfig.io
+        script: curl -X PUT 'https://api.fastly.com/service/3lTDJqPEIavoiXpuWQ38fs/dictionary/1pKFtz1LpaWtn5FOoYVVHx/item/enabled?item_value=false' --header 'Content-Type: application/x-www-form-urlencoded' --header 'Accept: application/json' --header 'Fastly-Key: ${{ secrets.fastly_key }}'
   Maintenance_off:
     if: ${{ github.event.client_payload.maintenance }}
     name: Maintenance ON
