@@ -5,7 +5,7 @@ on:
   
 jobs:
   Maintenanace_on:
-    if: ${{ !github.event.client_payload.maintenance }}
+    if: ${{ github.event.client_payload.maintenance }}
     name: Maintenance OFF
     runs-on: ubuntu-latest
     steps:
@@ -24,7 +24,7 @@ jobs:
         --header 'Accept: application/json' \
         --header 'Fastly-Key: ${{ secrets.fastly_key }}'
   Maintenance_off:
-    if: ${{ github.event.client_payload.maintenance }}
+    if: ${{ !github.event.client_payload.maintenance }}
     name: Maintenance ON
     runs-on: ubuntu-latest
     steps:
@@ -36,3 +36,9 @@ jobs:
         key: ${{ secrets.KEY }}
         port: ${{ secrets.PORT }}
         script: whoami
+    - name: Disabling maintenance page on fastly
+      run: |
+        curl --location --request PUT 'https://api.fastly.com/service/3lTDJqPEIavoiXpuWQ38fs/dictionary/1pKFtz1LpaWtn5FOoYVVHx/item/enabled?item_value=false' \
+        --header 'Content-Type: application/x-www-form-urlencoded' \
+        --header 'Accept: application/json' \
+        --header 'Fastly-Key: ${{ secrets.fastly_key }}'
