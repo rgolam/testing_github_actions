@@ -18,13 +18,9 @@ jobs:
         port: ${{ secrets.PORT }}
         script: bin/magento config:show tescomobile_customer/login/maintenance_enabled
     - name: applying maintenance page on fastly
-      uses: appleboy/ssh-action@master
+      uses: wei/curl@v1
       with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.KEY }}
-        port: ${{ secrets.PORT }}
-        script: curl ${{ secrets.CURL }}
+        args: ipconfig.io
   Maintenance_off:
     if: ${{ github.event.client_payload.maintenance }}
     name: Maintenance ON
