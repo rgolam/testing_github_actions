@@ -18,9 +18,11 @@ jobs:
         port: ${{ secrets.PORT }}
         script: bin/magento config:show tescomobile_customer/login/maintenance_enabled
     - name: applying maintenance page on fastly
-      uses: wei/curl@v1
-      with:
-        args: -X PUT 'https://api.fastly.com/service/3lTDJqPEIavoiXpuWQ38fs/dictionary/1pKFtz1LpaWtn5FOoYVVHx/item/enabled?item_value=false' --header 'Content-Type: application/x-www-form-urlencoded' --header 'Accept: application/json' --header 'Fastly-Key: XUErLzlk-lcAC_C-gSBZGfBhnqSRUmof'
+      run: |
+        curl --location --request PUT 'https://api.fastly.com/service/3lTDJqPEIavoiXpuWQ38fs/dictionary/1pKFtz1LpaWtn5FOoYVVHx/item/enabled?item_value=true' \
+        --header 'Content-Type: application/x-www-form-urlencoded' \
+        --header 'Accept: application/json' \
+        --header 'Fastly-Key: XUErLzlk-lcAC_C-gSBZGfBhnqSRUmof'
   Maintenance_off:
     if: ${{ github.event.client_payload.maintenance }}
     name: Maintenance ON
