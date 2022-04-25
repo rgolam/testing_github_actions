@@ -4,7 +4,7 @@ on:
     types: [backend_automation]
   
 jobs:
-  Maintenanace_on:
+  Maintenance_on:
     if: ${{ github.event.client_payload.maintenance }}
     name: Maintenance ON
     runs-on: ubuntu-latest
@@ -19,7 +19,7 @@ jobs:
         script: bin/magento config:show tescomobile_customer/login/maintenance_enabled
     - name: applying maintenance page on fastly
       run: |
-        curl --location --request PUT 'https://api.fastly.com/service/3lTDJqPEIavoiXpuWQ38fs/dictionary/1pKFtz1LpaWtn5FOoYVVHx/item/enabled?item_value=true' \
+        curl --location --request PUT 'https://api.fastly.com/service/3lTDJqPEIavoiXpuWQ38fs/dictionary/3a7Y3c4MIY2uC7IrQbNpg6/item/enabled?item_value=true' \
         --header 'Content-Type: application/x-www-form-urlencoded' \
         --header 'Accept: application/json' \
         --header 'Fastly-Key: ${{ secrets.fastly_key }}'
@@ -38,7 +38,7 @@ jobs:
         script: whoami
     - name: Disabling maintenance page on fastly
       run: |
-        curl --location --request PUT 'https://api.fastly.com/service/3lTDJqPEIavoiXpuWQ38fs/dictionary/1pKFtz1LpaWtn5FOoYVVHx/item/enabled?item_value=false' \
+        curl --location --request PUT 'https://api.fastly.com/service/3lTDJqPEIavoiXpuWQ38fs/dictionary/3a7Y3c4MIY2uC7IrQbNpg6/item/enabled?item_value=false' \
         --header 'Content-Type: application/x-www-form-urlencoded' \
         --header 'Accept: application/json' \
         --header 'Fastly-Key: ${{ secrets.fastly_key }}'
